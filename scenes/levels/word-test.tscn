@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://brx5w8vjsfrpf"]
+
+[ext_resource type="PackedScene" uid="uid://lkn6t0y6tmr2" path="res://scenes/ui/sky.tscn" id="1_25nx1"]
+[ext_resource type="Script" uid="uid://bxhr0vmqi8xd4" path="res://scripts/ui/test/view.gd" id="1_bv8vw"]
+[ext_resource type="PackedScene" uid="uid://c4tnyo21immhd" path="res://assets/Platformer Kit/Models/GLTF format/large_buildingA.glb" id="2_8ox0g"]
+[ext_resource type="Script" uid="uid://s1os4gku4hsx" path="res://scripts/characters/test/character_body_3d.gd" id="2_rxifx"]
+[ext_resource type="PackedScene" uid="uid://cs1aggvfj47oy" path="res://assets/Platformer Kit/Models/GLTF format/skyscraperD.glb" id="3_gtuhu"]
+[ext_resource type="PackedScene" uid="uid://djbykhfco7me" path="res://scenes/characters/test/gobot.tscn" id="5_fj8bf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25nx1"]
+albedo_color = Color(0.392377, 0.228979, 0.0901814, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rxifx"]
+material = SubResource("StandardMaterial3D_25nx1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25nx1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_25nx1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv8vw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bv8vw"]
+height = 1.63782
+
+[node name="Word" type="Node3D"]
+
+[node name="camera_pivot" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_bv8vw")
+target = NodePath("../CharacterBody3D")
+
+[node name="Camera" type="Camera3D" parent="camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744161, 0)
+
+[node name="Sky" parent="." instance=ExtResource("1_25nx1")]
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(48.2557, 0, 0, 0, 0.0296589, 0, 0, 0, 30.0896, 0, 0, 0)
+mesh = SubResource("BoxMesh_rxifx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_25nx1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.974201, 0.225682, 0, -0.225682, 0.974201, 0, 9.23407, 21.637)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.738994, 0.532859, -4.81707)
+mesh = SubResource("BoxMesh_25nx1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_bv8vw")
+
+[node name="models_plataformer_kit" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4464, 0.898549, -3.78797)
+
+[node name="large_buildingA2" parent="models_plataformer_kit" instance=ExtResource("2_8ox0g")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.13499, -0.898549, -2.94915)
+
+[node name="skyscraperD2" parent="models_plataformer_kit" instance=ExtResource("3_gtuhu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 7.23784, -0.8272, -2.71704)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0457077, -2.84357)
+script = ExtResource("2_rxifx")
+view = NodePath("../camera_pivot")
+
+[node name="gobot" parent="CharacterBody3D" instance=ExtResource("5_fj8bf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785891, 0)
+shape = SubResource("CapsuleShape3D_bv8vw")

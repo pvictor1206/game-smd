@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://batj1n4qkjr7e"]
+[gd_scene load_steps=28 format=3 uid="uid://batj1n4qkjr7e"]
 
 [ext_resource type="Script" uid="uid://bxhr0vmqi8xd4" path="res://scripts/ui/test/view.gd" id="1_p4hfj"]
 [ext_resource type="PackedScene" uid="uid://lkn6t0y6tmr2" path="res://scenes/ui/sky.tscn" id="2_mlie2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://do3te1n6ncabq" path="res://scenes/characters/sophia/sophia.tscn" id="5_1bbuc"]
 [ext_resource type="Script" uid="uid://bytox24fxjpb7" path="res://scripts/ui/key_container.gd" id="6_t62ky"]
 [ext_resource type="PackedScene" uid="uid://dw3rlh1uh5nnp" path="res://scenes/itens/area_key.tscn" id="7_2acs0"]
+[ext_resource type="PackedScene" uid="uid://c6gybbui5ajan" path="res://interfaces/title_screen.tscn" id="7_mlie2"]
 [ext_resource type="FontFile" uid="uid://xsroiaj0ixo" path="res://assets/font/JockeyOne-Regular.ttf" id="8_kpsjv"]
 [ext_resource type="Texture2D" uid="uid://crinnteulmw01" path="res://assets/icon (2).png" id="9_xh6dw"]
 [ext_resource type="Texture2D" uid="uid://cuthdlvcskrcg" path="res://assets/move.png" id="10_j575j"]
@@ -85,6 +86,7 @@ offset_left = -337.0
 offset_bottom = 96.0
 grow_horizontal = 0
 script = ExtResource("6_t62ky")
+menu = ExtResource("7_mlie2")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="player/HUD/key_container"]
 custom_minimum_size = Vector2(96, 96)
@@ -121,14 +123,16 @@ vertical_alignment = 1
 
 [node name="Label_teclado" type="Label" parent="player/HUD"]
 layout_mode = 0
-offset_left = 88.0
+offset_left = 31.0
 offset_top = 582.0
-offset_right = 203.0
-offset_bottom = 606.0
+offset_right = 223.0
+offset_bottom = 633.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("8_kpsjv")
-text = "Movimentação"
+text = "Movimentação
+(J, K, L, I para rotação da câmera)"
+horizontal_alignment = 1
 
 [node name="mission" type="Label" parent="player/HUD"]
 layout_mode = 0
@@ -153,9 +157,64 @@ position = Vector2(127, 535)
 scale = Vector2(0.189796, 0.189796)
 texture = ExtResource("10_j575j")
 
+[node name="alert_fail" type="ColorRect" parent="player/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 313.0
+offset_top = 151.0
+offset_right = 853.0
+offset_bottom = 473.0
+
+[node name="Label" type="Label" parent="player/HUD/alert_fail"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 57.0
+offset_right = 493.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_kpsjv")
+theme_override_font_sizes/font_size = 30
+text = "AINDA NÃO COLETOU TODAS AS 3 CHAVES"
+
+[node name="btn_exit" type="Button" parent="player/HUD/alert_fail"]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 230.0
+offset_right = 313.0
+offset_bottom = 277.0
+text = "VOLTAR"
+
+[node name="alert_sucess" type="ColorRect" parent="player/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 313.0
+offset_top = 151.0
+offset_right = 853.0
+offset_bottom = 473.0
+
+[node name="Label" type="Label" parent="player/HUD/alert_sucess"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 64.0
+offset_right = 525.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_kpsjv")
+theme_override_font_sizes/font_size = 30
+text = "PARABÉNS: JOGO FINALIZADO"
+
+[node name="btn_conf" type="Button" parent="player/HUD/alert_sucess"]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 230.0
+offset_right = 313.0
+offset_bottom = 277.0
+text = "SAIR"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("11_ly721")
 autoplay = true
+parameters/looping = true
 
 [node name="itens" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64502, 0.465283, -0.66372)
@@ -838,3 +897,6 @@ shape = SubResource("BoxShape3D_25nx1")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("20_v3ut0")]
 transform = Transform3D(0.001413, 0.00290948, -0.0899418, 4.30971e-05, 0.0899529, 0.00291052, 0.0899889, -8.87642e-05, 0.00141087, 21.1592, -0.241303, -146.944)
+
+[connection signal="pressed" from="player/HUD/alert_fail/btn_exit" to="player/HUD/key_container" method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="player/HUD/alert_sucess/btn_conf" to="player/HUD/key_container" method="_on_btn_conf_pressed"]

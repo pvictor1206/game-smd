@@ -18,8 +18,9 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_credits_button_pressed() -> void:
-	get_tree().quit()
+	var url = "https://github.com/pvictor1206/game-smd"
+	OS.shell_open(url)
 
 
 func _on_quit_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().quit()

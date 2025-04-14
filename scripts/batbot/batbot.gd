@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED := 100.0
-const CHASE_RANGE := 5.0
+const CHASE_RANGE := 10.0
 
 @export var target : CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D

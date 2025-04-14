@@ -75,9 +75,9 @@ func jump(delta):
 	
 func game_finished():
 	if keys == 3:
-		print("Jogo Finalizado")
+		$HUD/alert_sucess.visible = true
 	else:
-		print("Ainda falta as 3 chaves")
+		$HUD/alert_fail.visible = true
 
 func add_key_observer(observer: HBoxContainer) -> void:
 	key_observers.append(observer)

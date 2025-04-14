@@ -1,4 +1,4 @@
-# 🎮 Projeto Godot - Game SMD (Socorro Meu Deus)
+# 🎮 Projeto Godot - Game SMD 
 
 Este é um projeto feito em **Godot 4.4.1** com foco em **comunicação entre personagens e HUD** usando o **Observer Pattern (Padrão Observador)**. A lógica implementada permite que a interface seja atualizada automaticamente sempre que o personagem coleta um item (chave), sem acoplamento direto entre os scripts.
 

@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(game)
 
 
 func _on_credits_button_pressed() -> void:

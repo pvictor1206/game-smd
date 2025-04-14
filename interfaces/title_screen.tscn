@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6gybbui5ajan"]
+[gd_scene load_steps=12 format=3 uid="uid://c6gybbui5ajan"]
 
 [ext_resource type="Script" uid="uid://dedkeve2skbd0" path="res://scripts/ui/title_screen.gd" id="1_7q816"]
 [ext_resource type="Texture2D" uid="uid://bnh22dusiirgy" path="res://assets/smd_icon.png" id="1_assw7"]
 [ext_resource type="Shader" uid="uid://bnlgsbgmmbuvs" path="res://interfaces/title_screen.tres" id="1_bywwc"]
 [ext_resource type="FontFile" uid="uid://xsroiaj0ixo" path="res://assets/font/JockeyOne-Regular.ttf" id="2_eu7ty"]
+[ext_resource type="PackedScene" uid="uid://batj1n4qkjr7e" path="res://scenes/levels/word.tscn" id="2_jyice"]
 [ext_resource type="Texture2D" uid="uid://ctdasc3mih2r8" path="res://assets/shopia_icon.png" id="4_7q816"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7ty"]
@@ -58,6 +59,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7q816")
+game = ExtResource("2_jyice")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

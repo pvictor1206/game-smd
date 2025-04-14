@@ -1,0 +1,840 @@
+[gd_scene load_steps=27 format=3 uid="uid://batj1n4qkjr7e"]
+
+[ext_resource type="Script" uid="uid://bxhr0vmqi8xd4" path="res://scripts/ui/test/view.gd" id="1_p4hfj"]
+[ext_resource type="PackedScene" uid="uid://lkn6t0y6tmr2" path="res://scenes/ui/sky.tscn" id="2_mlie2"]
+[ext_resource type="PackedScene" uid="uid://dyh813x18u7ij" path="res://scenes/city/scene/city.tscn" id="3_q0xu6"]
+[ext_resource type="Script" uid="uid://s1os4gku4hsx" path="res://scripts/characters/test/character_body_3d.gd" id="4_108c5"]
+[ext_resource type="PackedScene" uid="uid://do3te1n6ncabq" path="res://scenes/characters/sophia/sophia.tscn" id="5_1bbuc"]
+[ext_resource type="Script" uid="uid://bytox24fxjpb7" path="res://scripts/ui/key_container.gd" id="6_t62ky"]
+[ext_resource type="PackedScene" uid="uid://dw3rlh1uh5nnp" path="res://scenes/itens/area_key.tscn" id="7_2acs0"]
+[ext_resource type="FontFile" uid="uid://xsroiaj0ixo" path="res://assets/font/JockeyOne-Regular.ttf" id="8_kpsjv"]
+[ext_resource type="Texture2D" uid="uid://crinnteulmw01" path="res://assets/icon (2).png" id="9_xh6dw"]
+[ext_resource type="Texture2D" uid="uid://cuthdlvcskrcg" path="res://assets/move.png" id="10_j575j"]
+[ext_resource type="AudioStream" uid="uid://dg4kodpp4fg61" path="res://assets/music/Super Mario World Game Over LoFi Hip Hop Remix.mp3" id="11_ly721"]
+[ext_resource type="PackedScene" uid="uid://bo4het2ax3vkc" path="res://scenes/npcs/scene/npcs.tscn" id="12_kxc8p"]
+[ext_resource type="PackedScene" uid="uid://c3i8bhp884yus" path="res://scenes/car/scene/car.tscn" id="13_0sfs1"]
+[ext_resource type="PackedScene" uid="uid://lx60p6fhbvyg" path="res://scenes/city/road_tile_001.tscn" id="14_708ac"]
+[ext_resource type="PackedScene" uid="uid://fphm1m354se8" path="res://scenes/city/road_tile_02.tscn" id="15_lqwo6"]
+[ext_resource type="PackedScene" uid="uid://bmowl5qum3g23" path="res://scenes/city/road_tile_03.tscn" id="16_yp3bm"]
+[ext_resource type="PackedScene" uid="uid://ccgju34j6pglp" path="res://scenes/city/road_tile_04.tscn" id="17_vx4h6"]
+[ext_resource type="Script" uid="uid://cl7ahtbsjkh6s" path="res://scripts/batbot/batbot.gd" id="18_0li33"]
+[ext_resource type="PackedScene" uid="uid://cne4pfigxis6a" path="res://scenes/bat/bat.tscn" id="19_5d4rt"]
+[ext_resource type="PackedScene" uid="uid://dsmbaugqvqbq4" path="res://scenes/city/gate.tscn" id="20_v3ut0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bv8vw"]
+height = 1.63782
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jvp23"]
+vertices = PackedVector3Array(-86.6415, 0.485171, -3.2466, -2.3915, 0.485171, -3.2466, -1.6415, 0.485171, -3.9966, -86.6415, 0.485171, -213.997, -0.391502, 0.485171, -3.9966, 0.358498, 0.485171, -3.2466, 86.6085, 0.485171, -3.2466, 86.6085, 0.485171, -213.997, -2.1415, 0.485171, -2.4966, -0.891502, 0.485171, -2.2466, -86.6415, 0.485171, 103.753, -0.891502, 0.485171, 103.753, 0.108498, 0.485171, -2.4966, 86.6085, 0.485171, 103.753)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 3), PackedInt32Array(4, 2, 3), PackedInt32Array(0, 1, 8), PackedInt32Array(8, 9, 0), PackedInt32Array(0, 9, 11), PackedInt32Array(0, 11, 10), PackedInt32Array(12, 5, 6), PackedInt32Array(12, 6, 9), PackedInt32Array(9, 6, 11), PackedInt32Array(11, 6, 13)]
+agent_max_slope = 60.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jvp23"]
+radius = 0.375331
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25nx1"]
+albedo_color = Color(0.00784314, 0.423529, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rxifx"]
+material = SubResource("StandardMaterial3D_25nx1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25nx1"]
+
+[node name="Word" type="Node3D"]
+
+[node name="camera_pivot" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_p4hfj")
+target = NodePath("../player")
+
+[node name="Camera" type="Camera3D" parent="camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744161, 0)
+
+[node name="Sky" parent="." instance=ExtResource("2_mlie2")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.974201, 0.225682, 0, -0.225682, 0.974201, 0, 9.23407, 21.637)
+
+[node name="city" parent="." instance=ExtResource("3_q0xu6")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -1.4464, 0.00159472, -11.6852)
+
+[node name="player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0457077, -2.84357)
+script = ExtResource("4_108c5")
+view = NodePath("../camera_pivot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785891, 0)
+shape = SubResource("CapsuleShape3D_bv8vw")
+
+[node name="sophia" parent="player" instance=ExtResource("5_1bbuc")]
+
+[node name="HUD" type="Control" parent="player"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="key_container" type="HBoxContainer" parent="player/HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -337.0
+offset_bottom = 96.0
+grow_horizontal = 0
+script = ExtResource("6_t62ky")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="player/HUD/key_container"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="player/HUD/key_container/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(96, 96)
+render_target_update_mode = 4
+
+[node name="key_holder" type="Node3D" parent="player/HUD/key_container/SubViewportContainer/SubViewport"]
+
+[node name="AreaKey" parent="player/HUD/key_container/SubViewportContainer/SubViewport/key_holder" instance=ExtResource("7_2acs0")]
+transform = Transform3D(0.62388, 0.78152, 0, -0.78152, 0.62388, 0, 0, 0, 1, -0.471011, 2.20464, 0)
+
+[node name="Camera3D" type="Camera3D" parent="player/HUD/key_container/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.998787, 0.0492333, 0, -0.0492333, 0.998787, -0.638129, 1.47658, 5.96359)
+current = true
+fov = 20.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="player/HUD/key_container/SubViewportContainer/SubViewport"]
+
+[node name="key_label" type="Label" parent="player/HUD/key_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("8_kpsjv")
+theme_override_font_sizes/font_size = 64
+text = "     0/3"
+vertical_alignment = 1
+
+[node name="Label_teclado" type="Label" parent="player/HUD"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 582.0
+offset_right = 203.0
+offset_bottom = 606.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("8_kpsjv")
+text = "Movimentação"
+
+[node name="mission" type="Label" parent="player/HUD"]
+layout_mode = 0
+offset_left = 903.0
+offset_top = 100.0
+offset_right = 1114.0
+offset_bottom = 189.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("8_kpsjv")
+theme_override_font_sizes/font_size = 20
+text = "Pegue as 3 chaves e abra o 
+portão escodindo no mapa"
+
+[node name="Icon(2)" type="Sprite2D" parent="player/HUD"]
+position = Vector2(119.061, 93.5625)
+scale = Vector2(0.226036, 0.226036)
+texture = ExtResource("9_xh6dw")
+
+[node name="Move" type="Sprite2D" parent="player/HUD"]
+position = Vector2(127, 535)
+scale = Vector2(0.189796, 0.189796)
+texture = ExtResource("10_j575j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("11_ly721")
+autoplay = true
+
+[node name="itens" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64502, 0.465283, -0.66372)
+
+[node name="keys" type="Node3D" parent="itens"]
+
+[node name="AreaKey1" parent="itens/keys" instance=ExtResource("7_2acs0")]
+transform = Transform3D(0.514918, 0.857239, 0, -0.857239, 0.514918, 0, 0, 0, 1, -46.6829, 2.31212, 3.2143)
+
+[node name="AreaKey2" parent="itens/keys" instance=ExtResource("7_2acs0")]
+transform = Transform3D(0.514918, 0.857239, 0, -0.857239, 0.514918, 0, 0, 0, 1, 50.1212, 2.31212, -53.7824)
+
+[node name="AreaKey3" parent="itens/keys" instance=ExtResource("7_2acs0")]
+transform = Transform3D(0.514918, 0.857239, 0, -0.857239, 0.514918, 0, 0, 0, 1, -52.1731, 2.31212, -96.4869)
+
+[node name="npcs" parent="." instance=ExtResource("12_kxc8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21599, 0.234694, 0.894433)
+
+[node name="car" parent="." instance=ExtResource("13_0sfs1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.4194, 0, -6.388)
+
+[node name="road" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 21.6434, 0, 11.7181)
+
+[node name="roadTile_025" parent="road" instance=ExtResource("14_708ac")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.17111, -0.532952, -5.87212)
+
+[node name="roadTile_031" parent="road" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.17, -0.533, -8.873)
+
+[node name="roadTile_019" parent="road" instance=ExtResource("16_yp3bm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7398, 0, -4.75986)
+
+[node name="roadTile_020" parent="road" instance=ExtResource("17_vx4h6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8023, 0, -4.15945)
+
+[node name="roadTile_020" parent="road/roadTile_020" instance=ExtResource("17_vx4h6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5327, 0, -41.8147)
+
+[node name="roadTile_032" parent="road" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.65344, -0.533, -46.1015)
+
+[node name="roadTile_033" parent="road" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.67941, -0.533, -43.3534)
+
+[node name="Node3D" type="Node3D" parent="road"]
+
+[node name="roadTile_032" parent="road/Node3D" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D2" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07162, 0, 11.3159)
+
+[node name="roadTile_032" parent="road/Node3D2" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D2" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal6" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.67547, 0, -13.8592)
+
+[node name="roadTile_032" parent="road/horizontal6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D4" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.9034, 0, -13.8592)
+
+[node name="roadTile_032" parent="road/Node3D4" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D4" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D5" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.4181, 0, -13.9308)
+
+[node name="roadTile_032" parent="road/Node3D5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.3901, 0, -13.953)
+
+[node name="roadTile_032" parent="road/horizontal" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D7" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.3552, 0, -53.1634)
+
+[node name="roadTile_032" parent="road/Node3D7" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D7" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D8" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.93762, 0, -53.1634)
+
+[node name="roadTile_032" parent="road/Node3D8" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D8" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D8" type="Node3D" parent="road/Node3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0273, 0, -2.13797)
+
+[node name="roadTile_032" parent="road/Node3D8/Node3D8" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D8/Node3D8" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D9" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.25789, 0, -53.1634)
+
+[node name="roadTile_032" parent="road/Node3D9" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D9" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D10" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08773, 0, -24.4454)
+
+[node name="roadTile_032" parent="road/Node3D10" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D10" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09307, 0, -18.6806)
+
+[node name="roadTile_032" parent="road/vertival" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D12" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09308, 0, -13.7328)
+
+[node name="roadTile_032" parent="road/Node3D12" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D12" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="Node3D13" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09308, 0, -8.1664)
+
+[node name="roadTile_032" parent="road/Node3D13" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/Node3D13" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal2" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.8456, 0, -32.3529)
+
+[node name="roadTile_032" parent="road/horizontal2" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal2" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal3" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.2573, 0, -32.3529)
+
+[node name="roadTile_032" parent="road/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal3" type="Node3D" parent="road/horizontal3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.681, 0, -20.63)
+
+[node name="roadTile_032" parent="road/horizontal3/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal3/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal4" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.6691, 0, -32.3529)
+
+[node name="roadTile_032" parent="road/horizontal4" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal4" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal5" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.3182, 0, -32.4503)
+
+[node name="roadTile_032" parent="road/horizontal5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival2" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16855, 0, -2.99013)
+
+[node name="roadTile_032" parent="road/vertival2" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival2" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival3" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16856, 0, 2.46639)
+
+[node name="roadTile_032" parent="road/vertival3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival4" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16856, 0, 7.63059)
+
+[node name="roadTile_032" parent="road/vertival4" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival4" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.42861, 0, -25.6581)
+
+[node name="roadTile_032" parent="road/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0817235, 0, 9.72653)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0817237, 0, 9.39273)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival7" type="Node3D" parent="road/vertival5/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157697, 0, 20.4087)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9193, 0, -28.7506)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.86, 0, -12.2795)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18704, 0, -2.90122)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5"]
+transform = Transform3D(0.999847, 0, 0.0174873, 0, 1, 0, -0.0174873, 0, 0.999847, 27.6208, 0, -3.26192)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5"]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -27.9262, 0, 28.7813)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0912552, 0, 4.91695)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.300923, 0, 3.12002)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0796242, 0, 5.46107)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.290504, 0, 5.99573)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0033493, 0, 9.28648)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34286, 0, -9.57743)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00335312, 0, 10.8327)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="roadTile_034" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.2332, -0.533, -19.9353)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.02604, 0, 10.2231)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000167847, 0, 10.6208)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4638, 0, -25.8055)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0354567, 0, -10.2387)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival6" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9193, 0, -28.7506)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="vertival5" type="Node3D" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026989, 0, 5.39495)
+
+[node name="roadTile_032" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/vertival5/vertival6/vertival7/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival6/vertival5" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal7" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.174444, 0, -13.8592)
+
+[node name="roadTile_032" parent="road/horizontal7" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal7" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal6" type="Node3D" parent="road/horizontal7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052865, 0, -5.4489)
+
+[node name="roadTile_032" parent="road/horizontal7/horizontal6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal7/horizontal6" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal8" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.54763, 0, -32.3529)
+
+[node name="roadTile_032" parent="road/horizontal8" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal8" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal9" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.66343, 0, -32.3529)
+
+[node name="roadTile_032" parent="road/horizontal9" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal9" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal10" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.45843, 0, -46.4471)
+
+[node name="roadTile_032" parent="road/horizontal10" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal10" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal3" type="Node3D" parent="road/horizontal10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108154, 0, -7.53017)
+
+[node name="roadTile_032" parent="road/horizontal10/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal10/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal11" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.4677, 0, -41.1881)
+
+[node name="roadTile_032" parent="road/horizontal11" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal11" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal3" type="Node3D" parent="road/horizontal11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.318523, 0, 6.77444)
+
+[node name="roadTile_032" parent="road/horizontal11/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal11/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal12" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.6169, 0, -41.6088)
+
+[node name="roadTile_032" parent="road/horizontal12" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal12" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal3" type="Node3D" parent="road/horizontal12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4677, 0, -4.16439)
+
+[node name="roadTile_032" parent="road/horizontal12/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal12/horizontal3" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="horizontal13" type="Node3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.248, 0, -53.1787)
+
+[node name="roadTile_032" parent="road/horizontal13" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.20621, -0.533, -14.5404)
+
+[node name="roadTile_033" parent="road/horizontal13" instance=ExtResource("15_lqwo6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.18024, -0.533, -11.7922)
+
+[node name="roadTile_021" parent="road" instance=ExtResource("16_yp3bm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1313, 0, -46.0608)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00423, 0, 0, -68.7182)
+navigation_mesh = SubResource("NavigationMesh_jvp23")
+
+[node name="batbot" type="CharacterBody3D" parent="NavigationRegion3D" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75718, 1.13181, 68.004)
+script = ExtResource("18_0li33")
+target = NodePath("../../player")
+
+[node name="bat" parent="NavigationRegion3D/batbot" instance=ExtResource("19_5d4rt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65214, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/batbot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.669734, 0.148823)
+shape = SubResource("SphereShape3D_jvp23")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavigationRegion3D/batbot"]
+path_height_offset = 1.0
+
+[node name="floor" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(174.283, 0, 0, 0, 0.0296589, 0, 0, 0, -318.742, 0, 0, -55.1256)
+mesh = SubResource("BoxMesh_rxifx")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_25nx1")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("20_v3ut0")]
+transform = Transform3D(0.001413, 0.00290948, -0.0899418, 4.30971e-05, 0.0899529, 0.00291052, 0.0899889, -8.87642e-05, 0.00141087, 21.1592, -0.241303, -146.944)

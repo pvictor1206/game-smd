@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://brx5w8vjsfrpf"]
+[gd_scene load_steps=39 format=3 uid="uid://brx5w8vjsfrpf"]
 
 [ext_resource type="PackedScene" uid="uid://lkn6t0y6tmr2" path="res://scenes/ui/sky.tscn" id="1_25nx1"]
 [ext_resource type="Script" uid="uid://bxhr0vmqi8xd4" path="res://scripts/ui/test/view.gd" id="1_bv8vw"]
@@ -18,15 +18,33 @@
 [ext_resource type="PackedScene" uid="uid://c7q0rwdcjw63d" path="res://scenes/npcs/character_male_a_2.tscn" id="12_6addk"]
 [ext_resource type="PackedScene" uid="uid://buwidi58oto6s" path="res://scenes/npcs/character_male_c_2.tscn" id="13_f4hnf"]
 [ext_resource type="PackedScene" uid="uid://s5wkmxdgqasv" path="res://scenes/itens/area_soda.tscn" id="13_jflix"]
+[ext_resource type="Script" uid="uid://cl7ahtbsjkh6s" path="res://scripts/batbot/batbot.gd" id="13_jvp23"]
+[ext_resource type="PackedScene" uid="uid://cne4pfigxis6a" path="res://scenes/bat/bat.tscn" id="13_x57fl"]
 [ext_resource type="PackedScene" uid="uid://cp2kyhupy1as0" path="res://scenes/npcs/character_male_f_2.tscn" id="14_3fp8o"]
 [ext_resource type="PackedScene" uid="uid://2l1gvhku114c" path="res://scenes/itens/area_cup_cake.tscn" id="14_jflix"]
 [ext_resource type="PackedScene" uid="uid://va0c0ao1lk5m" path="res://scenes/car/ambulance.tscn" id="15_gque2"]
+[ext_resource type="PackedScene" uid="uid://dw3rlh1uh5nnp" path="res://scenes/itens/area_key.tscn" id="15_n1e4d"]
 [ext_resource type="PackedScene" uid="uid://b1gqg5bwbf484" path="res://scenes/car/cone_2.tscn" id="16_ovuh4"]
 [ext_resource type="PackedScene" uid="uid://bf2pyudri7tex" path="res://scenes/car/delivery_flat.tscn" id="17_g0w3a"]
 [ext_resource type="PackedScene" uid="uid://dsh2clhqgk72o" path="res://scenes/car/firetruck.tscn" id="18_nt84m"]
 [ext_resource type="PackedScene" uid="uid://dhltv854l6256" path="res://scenes/car/hatchback_sports.tscn" id="19_7pjvc"]
 [ext_resource type="PackedScene" uid="uid://dlu60jsxsg2s2" path="res://scenes/car/police.tscn" id="20_q3d00"]
 [ext_resource type="PackedScene" uid="uid://cctxpebpx0cb1" path="res://scenes/car/taxi.tscn" id="21_jflix"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_25nx1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv8vw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bv8vw"]
+height = 1.63782
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jvp23"]
+vertices = PackedVector3Array(-86.6415, 0.485171, -3.2466, -2.3915, 0.485171, -3.2466, -1.6415, 0.485171, -3.9966, -86.6415, 0.485171, -213.997, -0.391502, 0.485171, -3.9966, 0.358498, 0.485171, -3.2466, 86.6085, 0.485171, -3.2466, 86.6085, 0.485171, -213.997, -2.1415, 0.485171, -2.4966, -0.891502, 0.485171, -2.2466, -86.6415, 0.485171, 103.753, -0.891502, 0.485171, 103.753, 0.108498, 0.485171, -2.4966, 86.6085, 0.485171, 103.753)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 3), PackedInt32Array(4, 2, 3), PackedInt32Array(0, 1, 8), PackedInt32Array(8, 9, 0), PackedInt32Array(0, 9, 11), PackedInt32Array(0, 11, 10), PackedInt32Array(12, 5, 6), PackedInt32Array(12, 6, 9), PackedInt32Array(9, 6, 11), PackedInt32Array(11, 6, 13)]
+agent_max_slope = 60.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jvp23"]
+radius = 0.656859
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25nx1"]
 albedo_color = Color(0.392377, 0.228979, 0.0901814, 1)
@@ -35,13 +53,6 @@ albedo_color = Color(0.392377, 0.228979, 0.0901814, 1)
 material = SubResource("StandardMaterial3D_25nx1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_25nx1"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_25nx1"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bv8vw"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bv8vw"]
-height = 1.63782
 
 [node name="Word" type="Node3D"]
 
@@ -53,16 +64,6 @@ target = NodePath("../player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744161, 0)
 
 [node name="Sky" parent="." instance=ExtResource("1_25nx1")]
-
-[node name="floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(174.283, 0, 0, 0, 0.0296589, 0, 0, 0, -318.742, 0, 0, -55.1256)
-mesh = SubResource("BoxMesh_rxifx")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_25nx1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.974201, 0.225682, 0, -0.225682, 0.974201, 0, 9.23407, 21.637)
@@ -122,6 +123,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25748, -2.20924)
 [node name="AreaCupCake" parent="itens" instance=ExtResource("14_jflix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83692, 1.38857, -2.13962)
 
+[node name="keys" type="Node3D" parent="itens"]
+
+[node name="AreaKey1" parent="itens/keys" instance=ExtResource("15_n1e4d")]
+transform = Transform3D(0.514918, 0.857239, 0, -0.857239, 0.514918, 0, 0, 0, 1, 2.08284, 2.31212, 0.925299)
+
+[node name="AreaKey2" parent="itens/keys" instance=ExtResource("15_n1e4d")]
+transform = Transform3D(0.514918, 0.857239, 0, -0.857239, 0.514918, 0, 0, 0, 1, 4.00846, 2.31212, 0.925299)
+
+[node name="AreaKey3" parent="itens/keys" instance=ExtResource("15_n1e4d")]
+transform = Transform3D(0.514918, 0.857239, 0, -0.857239, 0.514918, 0, 0, 0, 1, 0.243847, 2.31212, 0.925299)
+
 [node name="npcs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21599, 0, 0.894433)
 
@@ -165,3 +177,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87569, 0, -6.75758)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17778, 0, -6.40282)
 
 [node name="taxi" parent="car" instance=ExtResource("21_jflix")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_jvp23")
+
+[node name="batbot" type="CharacterBody3D" parent="NavigationRegion3D" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.979875, 0, -3.07423)
+script = ExtResource("13_jvp23")
+target = NodePath("../../player")
+
+[node name="bat" parent="NavigationRegion3D/batbot" instance=ExtResource("13_x57fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65214, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/batbot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.669734, 0)
+shape = SubResource("SphereShape3D_jvp23")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NavigationRegion3D/batbot"]
+path_height_offset = 1.0
+
+[node name="floor" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(174.283, 0, 0, 0, 0.0296589, 0, 0, 0, -318.742, 0, 0, -55.1256)
+mesh = SubResource("BoxMesh_rxifx")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_25nx1")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw3rlh1uh5nnp"]
+
+[ext_resource type="Script" uid="uid://cu3g2ccbdky81" path="res://scripts/itens/area_key.gd" id="1_5nmyy"]
+[ext_resource type="PackedScene" uid="uid://hhl153w4nuov" path="res://scenes/itens/key.tscn" id="1_onp48"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n1e4d"]
+height = 2.57062
+
+[node name="AreaKey" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58471, 0)
+script = ExtResource("1_5nmyy")
+
+[node name="key" parent="." instance=ExtResource("1_onp48")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.0296837, -0.999559, 0, 0.999559, 0.0296837, 0, 0, 0, 1, 0.750344, -0.0131019, 0.015696)
+shape = SubResource("CapsuleShape3D_n1e4d")

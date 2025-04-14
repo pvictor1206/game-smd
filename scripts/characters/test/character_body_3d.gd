@@ -19,8 +19,8 @@ var key_observers: Array[HBoxContainer] = []
 
 func _ready():
 	var observer = $HUD/key_container as HBoxContainer
-	print(observer)	
 	add_key_observer(observer)
+	
 
 func _physics_process(delta: float) -> void:
 	handle_input(delta)

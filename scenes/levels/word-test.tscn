@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://brx5w8vjsfrpf"]
+[gd_scene load_steps=27 format=3 uid="uid://brx5w8vjsfrpf"]
 
 [ext_resource type="PackedScene" uid="uid://lkn6t0y6tmr2" path="res://scenes/ui/sky.tscn" id="1_25nx1"]
 [ext_resource type="Script" uid="uid://bxhr0vmqi8xd4" path="res://scripts/ui/test/view.gd" id="1_bv8vw"]
 [ext_resource type="Script" uid="uid://s1os4gku4hsx" path="res://scripts/characters/test/character_body_3d.gd" id="2_rxifx"]
 [ext_resource type="PackedScene" uid="uid://dyh813x18u7ij" path="res://scenes/city/scene/city.tscn" id="3_3fp8o"]
 [ext_resource type="PackedScene" uid="uid://do3te1n6ncabq" path="res://scenes/characters/sophia/sophia.tscn" id="6_bv8vw"]
+[ext_resource type="AudioStream" uid="uid://dg4kodpp4fg61" path="res://assets/music/Super Mario World Game Over LoFi Hip Hop Remix.mp3" id="11_gque2"]
 [ext_resource type="PackedScene" uid="uid://bo4het2ax3vkc" path="res://scenes/npcs/scene/npcs.tscn" id="11_wk8wj"]
 [ext_resource type="PackedScene" uid="uid://c3i8bhp884yus" path="res://scenes/car/scene/car.tscn" id="12_gque2"]
 [ext_resource type="Script" uid="uid://cl7ahtbsjkh6s" path="res://scripts/batbot/batbot.gd" id="13_jvp23"]
@@ -151,6 +152,10 @@ texture = ExtResource("16_r31sa")
 position = Vector2(127, 535)
 scale = Vector2(0.189796, 0.189796)
 texture = ExtResource("17_mffqa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("11_gque2")
+autoplay = true
 
 [node name="itens" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64502, 0.465283, -0.66372)

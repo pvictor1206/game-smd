@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://do3te1n6ncabq"]
+
+[ext_resource type="PackedScene" uid="uid://16iu10wxub40" path="res://assets/actors/godot-4-3D-Characters-main/addons/gdquest_sophia/model/sophia.glb" id="1_b2wvh"]
+
+[node name="sophia" instance=ExtResource("1_b2wvh")]

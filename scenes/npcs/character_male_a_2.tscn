@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7q0rwdcjw63d"]
+
+[ext_resource type="PackedScene" uid="uid://c2gm7rjheuwy" path="res://assets/Platformer Kit/Models/npcs/character-male-a.glb" id="1_yxtdi"]
+
+[node name="character-male-a2" instance=ExtResource("1_yxtdi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="character-male-a" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="character-male-a" index="0"]
+bones/4/rotation = Quaternion(0, 0, -0.382683, 0.92388)
+bones/5/rotation = Quaternion(0, 0, 0.382683, 0.92388)

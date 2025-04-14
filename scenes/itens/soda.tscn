@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://txx3tsi2u0n6"]
+
+[ext_resource type="PackedScene" uid="uid://ccft3e1l3ed4m" path="res://assets/Platformer Kit/Models/itens/soda.glb" id="1_x3klh"]
+
+[node name="soda2" instance=ExtResource("1_x3klh")]
+
+[node name="soda" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

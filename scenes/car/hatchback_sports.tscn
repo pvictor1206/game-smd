@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhltv854l6256"]
+
+[ext_resource type="PackedScene" uid="uid://wtbcb2udmjyu" path="res://assets/Platformer Kit/Models/car/hatchback-sports.glb" id="1_ckyjd"]
+
+[node name="hatchback-sports" instance=ExtResource("1_ckyjd")]

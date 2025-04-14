@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbn557q4pylgp"]
+
+[ext_resource type="PackedScene" uid="uid://crmppm556mjl5" path="res://assets/Platformer Kit/Models/GLTF format/large_buildingG.glb" id="1_0x5el"]
+
+[node name="large_buildingG2" instance=ExtResource("1_0x5el")]

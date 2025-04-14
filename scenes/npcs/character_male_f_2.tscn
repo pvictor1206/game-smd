@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp2kyhupy1as0"]
+
+[ext_resource type="PackedScene" uid="uid://ddgybmi371d5v" path="res://assets/Platformer Kit/Models/npcs/character-male-f.glb" id="1_ufdlm"]
+
+[node name="character-male-f2" instance=ExtResource("1_ufdlm")]
+
+[node name="character-male-f" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="character-male-f" index="0"]
+bones/4/rotation = Quaternion(0, 0, -0.382683, 0.92388)
+bones/5/rotation = Quaternion(0, 0, 0.382683, 0.92388)

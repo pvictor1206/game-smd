@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhsgso00m0kw0"]
+
+[ext_resource type="PackedScene" uid="uid://dg18xwexit37f" path="res://assets/Platformer Kit/Models/itens/cupcake.glb" id="1_dmyqq"]
+
+[node name="cupcake2" instance=ExtResource("1_dmyqq")]
+
+[node name="cupcake" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

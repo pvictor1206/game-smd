@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkhyud7l7uwuu"]
+
+[ext_resource type="PackedScene" uid="uid://cs1aggvfj47oy" path="res://assets/Platformer Kit/Models/GLTF format/skyscraperD.glb" id="1_kwgx3"]
+
+[node name="skyscraperD2" instance=ExtResource("1_kwgx3")]

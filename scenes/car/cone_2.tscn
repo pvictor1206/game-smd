@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1gqg5bwbf484"]
+
+[ext_resource type="PackedScene" uid="uid://bw1k87g8jcj8k" path="res://assets/Platformer Kit/Models/car/cone.glb" id="1_xbdhw"]
+
+[node name="cone2" instance=ExtResource("1_xbdhw")]

@@ -1,11 +1,32 @@
-[gd_scene load_steps=13 format=3 uid="uid://brx5w8vjsfrpf"]
+[gd_scene load_steps=34 format=3 uid="uid://brx5w8vjsfrpf"]
 
 [ext_resource type="PackedScene" uid="uid://lkn6t0y6tmr2" path="res://scenes/ui/sky.tscn" id="1_25nx1"]
 [ext_resource type="Script" uid="uid://bxhr0vmqi8xd4" path="res://scripts/ui/test/view.gd" id="1_bv8vw"]
-[ext_resource type="PackedScene" uid="uid://c4tnyo21immhd" path="res://assets/Platformer Kit/Models/GLTF format/large_buildingA.glb" id="2_8ox0g"]
 [ext_resource type="Script" uid="uid://s1os4gku4hsx" path="res://scripts/characters/test/character_body_3d.gd" id="2_rxifx"]
-[ext_resource type="PackedScene" uid="uid://cs1aggvfj47oy" path="res://assets/Platformer Kit/Models/GLTF format/skyscraperD.glb" id="3_gtuhu"]
-[ext_resource type="PackedScene" uid="uid://djbykhfco7me" path="res://scenes/characters/test/gobot.tscn" id="5_fj8bf"]
+[ext_resource type="PackedScene" uid="uid://clvqj36yqw4ls" path="res://scenes/city/large_building_a_2.tscn" id="3_jflix"]
+[ext_resource type="PackedScene" uid="uid://bft45hcpv8ka6" path="res://scenes/city/large_building_b_2.tscn" id="4_n1e4d"]
+[ext_resource type="PackedScene" uid="uid://26kja11of40s" path="res://scenes/city/large_building_d_2.tscn" id="5_x57fl"]
+[ext_resource type="PackedScene" uid="uid://do3te1n6ncabq" path="res://scenes/characters/sophia/sophia.tscn" id="6_bv8vw"]
+[ext_resource type="PackedScene" uid="uid://67g3kivmmg82" path="res://scenes/city/large_building_e_2.tscn" id="6_jvp23"]
+[ext_resource type="PackedScene" uid="uid://txx3tsi2u0n6" path="res://scenes/itens/soda.tscn" id="7_ab2o0"]
+[ext_resource type="PackedScene" uid="uid://b208tso2cmfrd" path="res://scenes/city/large_building_f_2.tscn" id="7_c8v4x"]
+[ext_resource type="PackedScene" uid="uid://bhsgso00m0kw0" path="res://scenes/itens/cupcake.tscn" id="8_dp4xh"]
+[ext_resource type="PackedScene" uid="uid://cbn557q4pylgp" path="res://scenes/city/large_building_g_2.tscn" id="8_sj6g8"]
+[ext_resource type="PackedScene" uid="uid://cc2vtjdy4vdx7" path="res://scenes/npcs/character_female_a_2.tscn" id="9_f5k8e"]
+[ext_resource type="PackedScene" uid="uid://dkhyud7l7uwuu" path="res://scenes/city/skyscraper_d_2.tscn" id="9_r31sa"]
+[ext_resource type="PackedScene" uid="uid://b08v33o7gg23m" path="res://scenes/npcs/character_female_b_2.tscn" id="10_ffbpy"]
+[ext_resource type="PackedScene" uid="uid://cypxjae3e8av" path="res://scenes/city/skyscraper_e_2.tscn" id="10_mffqa"]
+[ext_resource type="PackedScene" uid="uid://b74tf8aa5nobj" path="res://scenes/npcs/character_female_e_2.tscn" id="11_kd7ap"]
+[ext_resource type="PackedScene" uid="uid://c7q0rwdcjw63d" path="res://scenes/npcs/character_male_a_2.tscn" id="12_6addk"]
+[ext_resource type="PackedScene" uid="uid://buwidi58oto6s" path="res://scenes/npcs/character_male_c_2.tscn" id="13_f4hnf"]
+[ext_resource type="PackedScene" uid="uid://cp2kyhupy1as0" path="res://scenes/npcs/character_male_f_2.tscn" id="14_3fp8o"]
+[ext_resource type="PackedScene" uid="uid://va0c0ao1lk5m" path="res://scenes/car/ambulance.tscn" id="15_gque2"]
+[ext_resource type="PackedScene" uid="uid://b1gqg5bwbf484" path="res://scenes/car/cone_2.tscn" id="16_ovuh4"]
+[ext_resource type="PackedScene" uid="uid://bf2pyudri7tex" path="res://scenes/car/delivery_flat.tscn" id="17_g0w3a"]
+[ext_resource type="PackedScene" uid="uid://dsh2clhqgk72o" path="res://scenes/car/firetruck.tscn" id="18_nt84m"]
+[ext_resource type="PackedScene" uid="uid://dhltv854l6256" path="res://scenes/car/hatchback_sports.tscn" id="19_7pjvc"]
+[ext_resource type="PackedScene" uid="uid://dlu60jsxsg2s2" path="res://scenes/car/police.tscn" id="20_q3d00"]
+[ext_resource type="PackedScene" uid="uid://cctxpebpx0cb1" path="res://scenes/car/taxi.tscn" id="21_jflix"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25nx1"]
 albedo_color = Color(0.392377, 0.228979, 0.0901814, 1)
@@ -34,7 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744161, 0)
 [node name="Sky" parent="." instance=ExtResource("1_25nx1")]
 
 [node name="floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(48.2557, 0, 0, 0, 0.0296589, 0, 0, 0, 30.0896, 0, 0, 0)
+transform = Transform3D(174.283, 0, 0, 0, 0.0296589, 0, 0, 0, -318.742, 0, 0, -55.1256)
 mesh = SubResource("BoxMesh_rxifx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor"]
@@ -55,22 +76,92 @@ mesh = SubResource("BoxMesh_25nx1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_bv8vw")
 
-[node name="models_plataformer_kit" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4464, 0.898549, -3.78797)
+[node name="city" type="Node3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -1.4464, 0.00159472, -11.6852)
 
-[node name="large_buildingA2" parent="models_plataformer_kit" instance=ExtResource("2_8ox0g")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.13499, -0.898549, -2.94915)
+[node name="large_buildingA2" parent="city" instance=ExtResource("3_jflix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22204, 0, 0)
 
-[node name="skyscraperD2" parent="models_plataformer_kit" instance=ExtResource("3_gtuhu")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 7.23784, -0.8272, -2.71704)
+[node name="large_buildingB2" parent="city" instance=ExtResource("4_n1e4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.07228, 0, 0)
+
+[node name="large_buildingD2" parent="city" instance=ExtResource("5_x57fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54113, 0, 0)
+
+[node name="large_buildingE2" parent="city" instance=ExtResource("6_jvp23")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68466, 0, -2.56912)
+
+[node name="large_buildingF2" parent="city" instance=ExtResource("7_c8v4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53368, 0, -2.42001)
+
+[node name="large_buildingG2" parent="city" instance=ExtResource("8_sj6g8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.969675, 0, -3.25659)
+
+[node name="skyscraperD2" parent="city" instance=ExtResource("9_r31sa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46545, 0, -4.83523)
+
+[node name="skyscraperE2" parent="city" instance=ExtResource("10_mffqa")]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0457077, -2.84357)
 script = ExtResource("2_rxifx")
 view = NodePath("../camera_pivot")
 
-[node name="gobot" parent="CharacterBody3D" instance=ExtResource("5_fj8bf")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785891, 0)
 shape = SubResource("CapsuleShape3D_bv8vw")
+
+[node name="sophia" parent="CharacterBody3D" instance=ExtResource("6_bv8vw")]
+
+[node name="itens" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64502, 0, -0.66372)
+
+[node name="soda2" parent="itens" instance=ExtResource("7_ab2o0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.647491, 1.01405, -1.21316)
+
+[node name="cupcake2" parent="itens" instance=ExtResource("8_dp4xh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57224, 0.997968, -1.5259)
+
+[node name="npcs" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21599, 0, 0.894433)
+
+[node name="character-female-a2" parent="npcs" instance=ExtResource("9_f5k8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26146, 0, -0.867003)
+
+[node name="character-female-b2" parent="npcs" instance=ExtResource("10_ffbpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3891, 0, -0.945295)
+
+[node name="character-female-e2" parent="npcs" instance=ExtResource("11_kd7ap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51133, 0, -0.94875)
+
+[node name="character-male-a2" parent="npcs" instance=ExtResource("12_6addk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44756, 0, 1.11556)
+
+[node name="character-male-c2" parent="npcs" instance=ExtResource("13_f4hnf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17355, 0, 1.2113)
+
+[node name="character-male-f2" parent="npcs" instance=ExtResource("14_3fp8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.19628, 0, 1.23105)
+
+[node name="car" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.4194, 0, -6.388)
+
+[node name="ambulance" parent="car" instance=ExtResource("15_gque2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93236, 0, 0)
+
+[node name="cone2" parent="car" instance=ExtResource("16_ovuh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72857, 0, 0)
+
+[node name="delivery-flat" parent="car" instance=ExtResource("17_g0w3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69531, 0, 0)
+
+[node name="firetruck" parent="car" instance=ExtResource("18_nt84m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.2156)
+
+[node name="hatchback-sports" parent="car" instance=ExtResource("19_7pjvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87569, 0, -6.75758)
+
+[node name="police" parent="car" instance=ExtResource("20_q3d00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17778, 0, -6.40282)
+
+[node name="taxi" parent="car" instance=ExtResource("21_jflix")]

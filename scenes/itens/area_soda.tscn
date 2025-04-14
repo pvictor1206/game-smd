@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://s5wkmxdgqasv"]
+
+[ext_resource type="Script" uid="uid://dr7i2dwp8f44y" path="res://scripts/itens/area_soda.gd" id="1_6u43n"]
+[ext_resource type="PackedScene" uid="uid://cxwww1t5x6svm" path="res://scenes/itens/soda.tscn" id="1_jhipu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6u43n"]
+radius = 0.410831
+height = 1.08797
+
+[node name="AreaSoda" type="Area3D"]
+script = ExtResource("1_6u43n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.315745, 0)
+shape = SubResource("CapsuleShape3D_6u43n")
+
+[node name="soda2" parent="." instance=ExtResource("1_jhipu")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

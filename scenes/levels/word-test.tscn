@@ -8,9 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://26kja11of40s" path="res://scenes/city/large_building_d_2.tscn" id="5_x57fl"]
 [ext_resource type="PackedScene" uid="uid://do3te1n6ncabq" path="res://scenes/characters/sophia/sophia.tscn" id="6_bv8vw"]
 [ext_resource type="PackedScene" uid="uid://67g3kivmmg82" path="res://scenes/city/large_building_e_2.tscn" id="6_jvp23"]
-[ext_resource type="PackedScene" uid="uid://txx3tsi2u0n6" path="res://scenes/itens/soda.tscn" id="7_ab2o0"]
 [ext_resource type="PackedScene" uid="uid://b208tso2cmfrd" path="res://scenes/city/large_building_f_2.tscn" id="7_c8v4x"]
-[ext_resource type="PackedScene" uid="uid://bhsgso00m0kw0" path="res://scenes/itens/cupcake.tscn" id="8_dp4xh"]
 [ext_resource type="PackedScene" uid="uid://cbn557q4pylgp" path="res://scenes/city/large_building_g_2.tscn" id="8_sj6g8"]
 [ext_resource type="PackedScene" uid="uid://cc2vtjdy4vdx7" path="res://scenes/npcs/character_female_a_2.tscn" id="9_f5k8e"]
 [ext_resource type="PackedScene" uid="uid://dkhyud7l7uwuu" path="res://scenes/city/skyscraper_d_2.tscn" id="9_r31sa"]
@@ -19,7 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://b74tf8aa5nobj" path="res://scenes/npcs/character_female_e_2.tscn" id="11_kd7ap"]
 [ext_resource type="PackedScene" uid="uid://c7q0rwdcjw63d" path="res://scenes/npcs/character_male_a_2.tscn" id="12_6addk"]
 [ext_resource type="PackedScene" uid="uid://buwidi58oto6s" path="res://scenes/npcs/character_male_c_2.tscn" id="13_f4hnf"]
+[ext_resource type="PackedScene" uid="uid://s5wkmxdgqasv" path="res://scenes/itens/area_soda.tscn" id="13_jflix"]
 [ext_resource type="PackedScene" uid="uid://cp2kyhupy1as0" path="res://scenes/npcs/character_male_f_2.tscn" id="14_3fp8o"]
+[ext_resource type="PackedScene" uid="uid://2l1gvhku114c" path="res://scenes/itens/area_cup_cake.tscn" id="14_jflix"]
 [ext_resource type="PackedScene" uid="uid://va0c0ao1lk5m" path="res://scenes/car/ambulance.tscn" id="15_gque2"]
 [ext_resource type="PackedScene" uid="uid://b1gqg5bwbf484" path="res://scenes/car/cone_2.tscn" id="16_ovuh4"]
 [ext_resource type="PackedScene" uid="uid://bf2pyudri7tex" path="res://scenes/car/delivery_flat.tscn" id="17_g0w3a"]
@@ -47,7 +47,7 @@ height = 1.63782
 
 [node name="camera_pivot" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("1_bv8vw")
-target = NodePath("../CharacterBody3D")
+target = NodePath("../player")
 
 [node name="Camera" type="Camera3D" parent="camera_pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744161, 0)
@@ -102,25 +102,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46545, 0, -4.83523)
 
 [node name="skyscraperE2" parent="city" instance=ExtResource("10_mffqa")]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
+[node name="player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0457077, -2.84357)
 script = ExtResource("2_rxifx")
 view = NodePath("../camera_pivot")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785891, 0)
 shape = SubResource("CapsuleShape3D_bv8vw")
 
-[node name="sophia" parent="CharacterBody3D" instance=ExtResource("6_bv8vw")]
+[node name="sophia" parent="player" instance=ExtResource("6_bv8vw")]
 
 [node name="itens" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64502, 0, -0.66372)
 
-[node name="soda2" parent="itens" instance=ExtResource("7_ab2o0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.647491, 1.01405, -1.21316)
+[node name="AreaSoda" parent="itens" instance=ExtResource("13_jflix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25748, -2.20924)
 
-[node name="cupcake2" parent="itens" instance=ExtResource("8_dp4xh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57224, 0.997968, -1.5259)
+[node name="AreaCupCake" parent="itens" instance=ExtResource("14_jflix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83692, 1.38857, -2.13962)
 
 [node name="npcs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21599, 0, 0.894433)

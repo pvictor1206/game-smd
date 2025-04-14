@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://2l1gvhku114c"]
+
+[ext_resource type="Script" uid="uid://dp6sco61xote8" path="res://scripts/itens/area_cup_cake.gd" id="1_3so4x"]
+[ext_resource type="PackedScene" uid="uid://bhsgso00m0kw0" path="res://scenes/itens/cupcake.tscn" id="1_edbrt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3so4x"]
+
+[node name="AreaCupCake" type="Area3D"]
+script = ExtResource("1_3so4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271443, 0)
+shape = SubResource("SphereShape3D_3so4x")
+
+[node name="cupcake2" parent="." instance=ExtResource("1_edbrt")]

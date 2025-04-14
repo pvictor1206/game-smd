@@ -53,6 +53,108 @@ Este é um projeto feito em **Godot 4.4.1** com foco em **comunicação entre pe
 - `sky/`: imagens HDRI e elementos de céu usados para ambientação realista (ex: [AmbientCG HDRI](https://ambientcg.com/list?type=hdri&sort=popular)).
 
 
+## 🧠 Implementação do Padrão Observer no Projeto
+
+O projeto utiliza o **Padrão Observer (Observador)** para permitir que a interface (HUD) seja **notificada automaticamente** quando o personagem coleta uma chave. Isso evita acoplamento direto e melhora a manutenção do código.
+
+---
+
+# 🔁 Padrão Observer no Projeto Godot 4
+
+Este projeto utiliza o **Padrão Observer (Observador)** para atualizar automaticamente a interface (HUD) sempre que o personagem coleta uma chave. Essa abordagem desacopla os scripts, facilitando a manutenção e expansão do código.
+
+---
+
+## 🧩 Estrutura do Observer
+
+### 1. Interface Observador - `KeyObserver.gd`
+
+```gdscript
+extends Control
+class_name KeyObserver
+
+func on_key_collected(new_total: int) -> void:
+	pass
+#Define uma interface base que qualquer componente pode implementar para ser notificado.
+
+#O método on_key_collected() será chamado sempre que uma chave for coletada.
+
+```
+2. Observador Concreto - KeyContainer.gd
+```gdscript
+extends HBoxContainer
+class_name KeyContainer
+
+@onready var key_label = $key_label
+@export var menu : PackedScene
+
+func update_key(amount: int):
+	key_label.text = '     ' + str(amount) + '/3'
+
+# implementação do "Observer"
+func on_key_collected(new_total: int) -> void:
+	update_key(new_total)
+
+func _on_btn_exit_pressed() -> void:
+	$"../alert_fail".visible = false
+
+func _on_btn_conf_pressed() -> void:
+	get_tree().change_scene_to_packed(menu)
+#Este script implementa o observador concreto.
+
+#O método on_key_collected() é executado automaticamente quando o personagem coleta uma nova chave.
+
+#A função update_key() atualiza o texto do HUD.
+
+#Também inclui funções auxiliares para botões de interface.
+```
+3. Sujeito (Subject) - CharacterBody3D.gd
+```extends CharacterBody3D
+
+const SPEED = 300.0
+const JUMP_VELOCITY = 10.0
+@onready var animator = get_node("sophia/AnimationPlayer") as AnimationPlayer
+@export var view : Node3D
+
+var gravity = 0
+var moviment_velocity : Vector3
+var rotacion_direction : float
+var keys := 0
+
+@onready var keys_container = $HUD/key_container
+var key_observers: Array[HBoxContainer] = []
+
+func _ready():
+	var observer = $HUD/key_container as HBoxContainer
+	add_key_observer(observer)
+#Este script representa o sujeito (Subject), ou seja, o objeto que emite notificações para os observadores.
+
+#A variável key_observers mantém uma lista dos observadores registrados.
+
+#No _ready(), o HUD é registrado como observador.
+```
+🔧 Métodos do Sujeito
+Adicionar Observadores
+```gdscript
+func add_key_observer(observer: HBoxContainer) -> void:
+	key_observers.append(observer)
+#Registra o HUD (ou qualquer outro nó) como observador da coleta de chaves.
+
+Notificar os Observadores
+func notify_key_observers():
+	for obs in key_observers:
+		obs.on_key_collected(keys)
+#Percorre todos os observadores registrados e chama o método on_key_collected() passando o número atual de chaves.
+
+Coletar Chaves
+func collect_keys():
+	keys += 1
+	notify_key_observers()
+#Quando o personagem coleta uma chave:
+
+#O contador keys é incrementado.
+```
+
 ### 🌌 Ambiente e Céu
 
 - ☁️ Sky stylizado (HDRI): [Godot Stylized Sky - GDQuest](https://github.com/gdquest-demos/godot-4-stylized-sky)

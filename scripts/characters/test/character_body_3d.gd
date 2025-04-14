@@ -13,6 +13,15 @@ var rotacion_direction : float
 @onready var keys_container = $HUD/key_container
 var keys := 0
 
+# Observadores 
+var key_observers: Array[HBoxContainer] = []
+
+
+func _ready():
+	var observer = $HUD/key_container as HBoxContainer
+	print(observer)	
+	add_key_observer(observer)
+
 func _physics_process(delta: float) -> void:
 	handle_input(delta)
 	apply_gravity(delta)
@@ -63,13 +72,20 @@ func jump(delta):
 	
 	if gravity > 0 and is_on_floor():
 		gravity = 0
-
-func collect_keys():
-	keys += 1
-	keys_container.update_key(keys)
 	
 func game_finished():
 	if keys == 3:
 		print("Jogo Finalizado")
 	else:
 		print("Ainda falta as 3 chaves")
+
+func add_key_observer(observer: HBoxContainer) -> void:
+	key_observers.append(observer)
+
+func notify_key_observers():
+	for obs in key_observers:
+		obs.on_key_collected(keys)
+
+func collect_keys():
+	keys += 1
+	notify_key_observers()

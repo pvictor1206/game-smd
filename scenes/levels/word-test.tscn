@@ -138,6 +138,7 @@ offset_bottom = 189.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("14_c8v4x")
+theme_override_font_sizes/font_size = 20
 text = "Pegue as 3 chaves e abra o 
 portão escodindo no mapa"
 
@@ -831,4 +832,4 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_25nx1")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("38_5751v")]
-transform = Transform3D(0.00141366, 0.00565045, -0.0898113, 0, 0.0898224, 0.00565115, 0.0899889, -8.87642e-05, 0.00141087, 20.649, 0.473276, -146.944)
+transform = Transform3D(0.001413, 0.00290948, -0.0899418, 4.30971e-05, 0.0899529, 0.00291052, 0.0899889, -8.87642e-05, 0.00141087, 21.1592, -0.241303, -146.944)

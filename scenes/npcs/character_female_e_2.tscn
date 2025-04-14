@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b74tf8aa5nobj"]
+[gd_scene load_steps=3 format=3 uid="uid://b74tf8aa5nobj"]
 
 [ext_resource type="PackedScene" uid="uid://2tw6elc15kdl" path="res://assets/Platformer Kit/Models/npcs/character-female-e.glb" id="1_a1uv0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1uv0"]
+height = 1.57358
 
 [node name="character-female-e2" instance=ExtResource("1_a1uv0")]
 
@@ -10,3 +13,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 [node name="Skeleton3D" parent="character-female-e" index="0"]
 bones/4/rotation = Quaternion(0, 0, -0.382683, 0.92388)
 bones/5/rotation = Quaternion(0, 0, 0.382683, 0.92388)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70197, 0)
+shape = SubResource("CapsuleShape3D_a1uv0")

@@ -1,5 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhltv854l6256"]
+[gd_scene load_steps=3 format=3 uid="uid://dhltv854l6256"]
 
 [ext_resource type="PackedScene" uid="uid://wtbcb2udmjyu" path="res://assets/Platformer Kit/Models/car/hatchback-sports.glb" id="1_ckyjd"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ckyjd"]
+radius = 0.670939
+height = 5.16047
+
 [node name="hatchback-sports" instance=ExtResource("1_ckyjd")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.0183075, 0.999832, 0, -0.999832, -0.0183075, 0, 0.519275, 0)
+shape = SubResource("CapsuleShape3D_ckyjd")

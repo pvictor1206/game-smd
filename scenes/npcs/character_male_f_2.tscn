@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp2kyhupy1as0"]
+[gd_scene load_steps=3 format=3 uid="uid://cp2kyhupy1as0"]
 
 [ext_resource type="PackedScene" uid="uid://ddgybmi371d5v" path="res://assets/Platformer Kit/Models/npcs/character-male-f.glb" id="1_ufdlm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ufdlm"]
+height = 1.73038
 
 [node name="character-male-f2" instance=ExtResource("1_ufdlm")]
 
@@ -10,3 +13,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 [node name="Skeleton3D" parent="character-male-f" index="0"]
 bones/4/rotation = Quaternion(0, 0, -0.382683, 0.92388)
 bones/5/rotation = Quaternion(0, 0, 0.382683, 0.92388)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.748274, 0)
+shape = SubResource("CapsuleShape3D_ufdlm")

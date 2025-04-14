@@ -20,10 +20,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3965, 0, -2.02629)
 transform = Transform3D(-0.00811572, 0, 0.999967, 0, 1, 0, -0.999967, 0, -0.00811572, 4.14648, 0, -50.7877)
 
 [node name="hatchback-sports" parent="." instance=ExtResource("4_ml0jk")]
-transform = Transform3D(0.040219, 0, 0.999191, 0, 1, 0, -0.999191, 0, 0.040219, -26.0709, 0, -39.9511)
+transform = Transform3D(0.040219, 0, 0.999191, 0, 1, 0, -0.999191, 0, 0.040219, -24.984, 0, -39.9511)
 
 [node name="police" parent="." instance=ExtResource("5_jf0ln")]
-transform = Transform3D(0.00771427, 0, -0.99997, 0, 1, 0, 0.99997, 0, 0.00771427, 15.4088, 0, -20.5801)
+transform = Transform3D(0.00771427, 0, -0.99997, 0, 1, 0, 0.99997, 0, 0.00771427, 13.5823, 0, -20.5801)
 
 [node name="taxi" parent="." instance=ExtResource("6_fidyg")]
 transform = Transform3D(-0.0226001, 0, 0.999745, 0, 1, 0, -0.999745, 0, -0.0226001, -25.6085, 0, -20.5519)

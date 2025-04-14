@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmowl5qum3g23"]
+
+[ext_resource type="PackedScene" uid="uid://c4jnbf1w0c4n6" path="res://assets/Platformer Kit/Models/road/roadTile_019.gltf" id="1_y7qnr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7qnr"]
+height = 2.61517
+
+[node name="roadTile_019" instance=ExtResource("1_y7qnr")]
+
+[node name="Area3D" type="StaticBody3D" parent="." index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421401, 1.23942, -0.508161)
+shape = SubResource("CapsuleShape3D_y7qnr")

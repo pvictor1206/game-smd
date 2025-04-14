@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 200.0
+const SPEED = 300.0
 const JUMP_VELOCITY = 10.0
 @onready var animator = get_node("sophia/AnimationPlayer") as AnimationPlayer
 
@@ -67,3 +67,9 @@ func jump(delta):
 func collect_keys():
 	keys += 1
 	keys_container.update_key(keys)
+	
+func game_finished():
+	if keys == 3:
+		print("Jogo Finalizado")
+	else:
+		print("Ainda falta as 3 chaves")

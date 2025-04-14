@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsmbaugqvqbq4"]
+
+[ext_resource type="PackedScene" uid="uid://6lrnpmyvsycu" path="res://assets/gate/scene.gltf" id="1_2vs4f"]
+[ext_resource type="Script" uid="uid://cdchu7u6eend3" path="res://scripts/itens/gate.gd" id="2_raae7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vs4f"]
+size = Vector3(61.4077, 82.7805, 102.367)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_raae7"]
+radius = 115.995
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_2vs4f")]
+script = ExtResource("2_raae7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.945992, 47.7181, -9.74995)
+shape = SubResource("BoxShape3D_2vs4f")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.679, 16.5924, -25.7417)
+shape = SubResource("SphereShape3D_raae7")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

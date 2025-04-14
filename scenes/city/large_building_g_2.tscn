@@ -1,5 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbn557q4pylgp"]
+[gd_scene load_steps=3 format=3 uid="uid://cbn557q4pylgp"]
 
 [ext_resource type="PackedScene" uid="uid://crmppm556mjl5" path="res://assets/Platformer Kit/Models/GLTF format/large_buildingG.glb" id="1_0x5el"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0x5el"]
+size = Vector3(1.7034, 2.06793, 1.68549)
+
 [node name="large_buildingG2" instance=ExtResource("1_0x5el")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0136871, 1.03851, -9.15527e-05)
+shape = SubResource("BoxShape3D_0x5el")

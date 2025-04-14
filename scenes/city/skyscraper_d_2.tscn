@@ -1,5 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkhyud7l7uwuu"]
+[gd_scene load_steps=3 format=3 uid="uid://dkhyud7l7uwuu"]
 
 [ext_resource type="PackedScene" uid="uid://cs1aggvfj47oy" path="res://assets/Platformer Kit/Models/GLTF format/skyscraperD.glb" id="1_kwgx3"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kwgx3"]
+size = Vector3(1.3208, 2.83484, 1.3208)
+
 [node name="skyscraperD2" instance=ExtResource("1_kwgx3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00463867, 1.40894, 0.0090332)
+shape = SubResource("BoxShape3D_kwgx3")

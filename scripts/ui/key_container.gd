@@ -18,4 +18,6 @@ func _on_btn_exit_pressed() -> void:
 
 
 func _on_btn_conf_pressed() -> void:
-	get_tree().change_scene_to_packed(menu)
+	#Não está reconhecendo a cena de menu
+	#get_tree().change_scene_to_packed(menu)
+	get_tree().quit()

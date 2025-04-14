@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://brx5w8vjsfrpf"]
+[gd_scene load_steps=41 format=3 uid="uid://brx5w8vjsfrpf"]
 
 [ext_resource type="PackedScene" uid="uid://lkn6t0y6tmr2" path="res://scenes/ui/sky.tscn" id="1_25nx1"]
 [ext_resource type="Script" uid="uid://bxhr0vmqi8xd4" path="res://scripts/ui/test/view.gd" id="1_bv8vw"]
@@ -19,8 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://buwidi58oto6s" path="res://scenes/npcs/character_male_c_2.tscn" id="13_f4hnf"]
 [ext_resource type="PackedScene" uid="uid://s5wkmxdgqasv" path="res://scenes/itens/area_soda.tscn" id="13_jflix"]
 [ext_resource type="Script" uid="uid://cl7ahtbsjkh6s" path="res://scripts/batbot/batbot.gd" id="13_jvp23"]
+[ext_resource type="Script" uid="uid://bytox24fxjpb7" path="res://scripts/ui/key_container.gd" id="13_sj6g8"]
 [ext_resource type="PackedScene" uid="uid://cne4pfigxis6a" path="res://scenes/bat/bat.tscn" id="13_x57fl"]
 [ext_resource type="PackedScene" uid="uid://cp2kyhupy1as0" path="res://scenes/npcs/character_male_f_2.tscn" id="14_3fp8o"]
+[ext_resource type="FontFile" uid="uid://xsroiaj0ixo" path="res://assets/font/JockeyOne-Regular.ttf" id="14_c8v4x"]
 [ext_resource type="PackedScene" uid="uid://2l1gvhku114c" path="res://scenes/itens/area_cup_cake.tscn" id="14_jflix"]
 [ext_resource type="PackedScene" uid="uid://va0c0ao1lk5m" path="res://scenes/car/ambulance.tscn" id="15_gque2"]
 [ext_resource type="PackedScene" uid="uid://dw3rlh1uh5nnp" path="res://scenes/itens/area_key.tscn" id="15_n1e4d"]
@@ -113,6 +115,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.785891, 0)
 shape = SubResource("CapsuleShape3D_bv8vw")
 
 [node name="sophia" parent="player" instance=ExtResource("6_bv8vw")]
+
+[node name="HUD" type="Control" parent="player"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="key_container" type="HBoxContainer" parent="player/HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -337.0
+offset_bottom = 96.0
+grow_horizontal = 0
+script = ExtResource("13_sj6g8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="player/HUD/key_container"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="player/HUD/key_container/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(96, 96)
+render_target_update_mode = 4
+
+[node name="key_holder" type="Node3D" parent="player/HUD/key_container/SubViewportContainer/SubViewport"]
+
+[node name="AreaKey" parent="player/HUD/key_container/SubViewportContainer/SubViewport/key_holder" instance=ExtResource("15_n1e4d")]
+transform = Transform3D(0.62388, 0.78152, 0, -0.78152, 0.62388, 0, 0, 0, 1, -0.471011, 2.20464, 0)
+
+[node name="Camera3D" type="Camera3D" parent="player/HUD/key_container/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.998787, 0.0492333, 0, -0.0492333, 0.998787, -0.638129, 1.47658, 5.96359)
+current = true
+fov = 20.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="player/HUD/key_container/SubViewportContainer/SubViewport"]
+
+[node name="key_label" type="Label" parent="player/HUD/key_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("14_c8v4x")
+theme_override_font_sizes/font_size = 64
+text = "     0"
+vertical_alignment = 1
 
 [node name="itens" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64502, 0, -0.66372)

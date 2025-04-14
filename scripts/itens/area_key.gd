@@ -1,9 +1,9 @@
 extends Area3D
 
-const ROTATION_SPEED := 50.0
+const ROTATION_SPEED := 30.0
 
 var start_pos := position.y
-var end_pos := position.y + 0.5
+var end_pos := position.y + 0.3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,3 +15,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	rotate_y(deg_to_rad(ROTATION_SPEED * delta))
+
+
+func _on_body_entered(body: Node3D) -> void:
+	if body.name == "player":
+		if body.has_method("collect_keys"):
+			body.collect_keys()
+		queue_free()

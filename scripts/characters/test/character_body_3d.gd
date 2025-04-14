@@ -10,6 +10,9 @@ var gravity = 0
 var moviment_velocity : Vector3
 var rotacion_direction : float
 
+@onready var keys_container = $HUD/key_container
+var keys := 0
+
 func _physics_process(delta: float) -> void:
 	handle_input(delta)
 	apply_gravity(delta)
@@ -60,3 +63,7 @@ func jump(delta):
 	
 	if gravity > 0 and is_on_floor():
 		gravity = 0
+
+func collect_keys():
+	keys += 1
+	keys_container.update_key(keys)

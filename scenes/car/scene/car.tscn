@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3i8bhp884yus"]
+
+[ext_resource type="PackedScene" uid="uid://va0c0ao1lk5m" path="res://scenes/car/ambulance.tscn" id="1_080xl"]
+[ext_resource type="PackedScene" uid="uid://bf2pyudri7tex" path="res://scenes/car/delivery_flat.tscn" id="2_27t0w"]
+[ext_resource type="PackedScene" uid="uid://dsh2clhqgk72o" path="res://scenes/car/firetruck.tscn" id="3_3nn37"]
+[ext_resource type="PackedScene" uid="uid://dhltv854l6256" path="res://scenes/car/hatchback_sports.tscn" id="4_ml0jk"]
+[ext_resource type="PackedScene" uid="uid://dlu60jsxsg2s2" path="res://scenes/car/police.tscn" id="5_jf0ln"]
+[ext_resource type="PackedScene" uid="uid://cctxpebpx0cb1" path="res://scenes/car/taxi.tscn" id="6_fidyg"]
+
+[node name="car" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ambulance" parent="." instance=ExtResource("1_080xl")]
+transform = Transform3D(-0.00897084, 0, -0.99996, 0, 1, 0, 0.99996, 0, -0.00897084, 15.3304, 0, 1.51976)
+
+[node name="delivery-flat" parent="." instance=ExtResource("2_27t0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3965, 0, -2.02629)
+
+[node name="firetruck" parent="." instance=ExtResource("3_3nn37")]
+transform = Transform3D(-0.00811572, 0, 0.999967, 0, 1, 0, -0.999967, 0, -0.00811572, 4.14648, 0, -50.7877)
+
+[node name="hatchback-sports" parent="." instance=ExtResource("4_ml0jk")]
+transform = Transform3D(0.040219, 0, 0.999191, 0, 1, 0, -0.999191, 0, 0.040219, -26.0709, 0, -39.9511)
+
+[node name="police" parent="." instance=ExtResource("5_jf0ln")]
+transform = Transform3D(0.00771427, 0, -0.99997, 0, 1, 0, 0.99997, 0, 0.00771427, 15.4088, 0, -20.5801)
+
+[node name="taxi" parent="." instance=ExtResource("6_fidyg")]
+transform = Transform3D(-0.0226001, 0, 0.999745, 0, 1, 0, -0.999745, 0, -0.0226001, -25.6085, 0, -20.5519)
